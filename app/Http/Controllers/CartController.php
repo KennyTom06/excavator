@@ -7,45 +7,41 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    protected $cartHandler;
+
+    public function __construct(\App\Handlers\CartHandler $cartHandler)
+    {
+        $this->cartHandler = $cartHandler;
+    }
+
     public function index()
     {
-        $cart = session()->get('cart', []);
-        $total = 0;
-        foreach ($cart as $item) {
-            $total += $item['price'] * $item['quantity'];
-        }
-        return view('cart.index', compact('cart', 'total'));
+        $data = $this->cartHandler->getCartData();
+        return view('cart.index', $data);
     }
 
     public function add(Request $request)
     {
-        $product = Product::where('slug', $request->slug)->firstOrFail();
-        $cart = session()->get('cart', []);
-
-        if(isset($cart[$product->id])) {
-            $cart[$product->id]['quantity']++;
-        } else {
-            $cart[$product->id] = [
-                'name' => $product->name,
-                'quantity' => 1,
-                'price' => $product->price ?? 0,
-                'image' => $product->image
-            ];
-        }
-
-        session()->put('cart', $cart);
+        $quantity = $request->input('quantity', 1);
+        $this->cartHandler->addToCart($request->slug, $quantity);
         return redirect()->route('cart.index')->with('success', 'Đã thêm vào giỏ hàng!');
+    }
+
+    public function update(Request $request)
+    {
+        if ($request->id && $request->quantity) {
+            $this->cartHandler->updateCart($request->id, $request->quantity);
+            return redirect()->route('cart.index')->with('success', 'Đã cập nhật giỏ hàng!');
+        }
+        return redirect()->back();
     }
 
     public function remove(Request $request)
     {
         if($request->id) {
-            $cart = session()->get('cart');
-            if(isset($cart[$request->id])) {
-                unset($cart[$request->id]);
-                session()->put('cart', $cart);
-            }
+            $this->cartHandler->removeFromCart($request->id);
             return redirect()->route('cart.index')->with('success', 'Đã xóa sản phẩm khỏi giỏ hàng.');
         }
+        return redirect()->back();
     }
 }

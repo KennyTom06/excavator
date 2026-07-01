@@ -8,18 +8,22 @@ use App\Models\Order;
 
 class OrderController extends Controller
 {
+    protected $orderHandler;
+
+    public function __construct(\App\Handlers\OrderHandler $orderHandler)
+    {
+        $this->orderHandler = $orderHandler;
+    }
+
     public function index()
     {
-        $orders = Order::where('user_id', Auth::id())->with('items')->latest()->get();
+        $orders = $this->orderHandler->getUserOrders();
         return view('orders.index', compact('orders'));
     }
 
-    public function show(Order $order)
+    public function show($orderId)
     {
-        if ($order->user_id !== Auth::id()) {
-            abort(403);
-        }
-        $order->load('items');
+        $order = $this->orderHandler->getOrderWithItemsForUser($orderId);
         return view('orders.show', compact('order'));
     }
 }

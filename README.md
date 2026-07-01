@@ -1,58 +1,35 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Thế Giới Máy Xây Dựng (Excavator Showcase)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Dự án Landing Page chuyên nghiệp giới thiệu các dòng máy xúc, máy ủi, thiết bị xây dựng.
 
-## About Laravel
+## Tính Năng Nổi Bật
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Giao Diện Đẹp Mắt & Chuyên Nghiệp:** Sử dụng Tailwind CSS với các hiệu ứng glassmorphism, animations hiện đại, mang lại trải nghiệm premium.
+- **Trải Nghiệm Tối Ưu (Pure UI):** Thiết kế thuần túy tập trung vào việc hiển thị sản phẩm chi tiết mà không có chức năng đăng nhập, đăng ký hay giỏ hàng cho Client, tạo sự tập trung tối đa vào sản phẩm.
+- **Quản Trị Linh Hoạt:** Toàn bộ thông tin sản phẩm, logo, banner được điều chỉnh dễ dàng thông qua hệ thống Admin (Filament).
+- **Kiến Trúc Clean Code:** Áp dụng mô hình chuẩn `Controller -> Handler -> Repository`. Giúp tách biệt logic truy xuất cơ sở dữ liệu, xử lý nghiệp vụ và điều hướng HTTP, dễ dàng mở rộng và bảo trì.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Yêu Cầu Hệ Thống
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP >= 8.2
+- Composer
+- Node.js & NPM
+- MySQL / PostgreSQL
 
-## Learning Laravel
+## Cài Đặt
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Sao chép `.env.example` thành `.env` và cấu hình Database.
+2. Chạy `composer install`
+3. Chạy `npm install && npm run build`
+4. Sinh key: `php artisan key:generate`
+5. Migrate database: `php artisan migrate`
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Kiến Trúc Mã Nguồn
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+Dự án sử dụng kiến trúc chuẩn giúp tối ưu hóa luồng code:
+- `app/Repositories`: Xử lý giao tiếp trực tiếp với Database.
+- `app/Handlers`: Xử lý logic nghiệp vụ, gọi qua Repositories.
+- `app/Http/Controllers`: Gọi Handlers và trả về View (chỉ tập trung vào HTTP Request).
 
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
-```
-
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Liên Hệ
+Mọi chi tiết xin vui lòng liên hệ ban quản trị.

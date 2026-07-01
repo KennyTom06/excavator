@@ -34,6 +34,7 @@ Route::get('/dat-hang-thanh-cong/{order}', [CheckoutController::class, 'success'
 Route::get('/gio-hang', [App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
 Route::post('/gio-hang/them', [App\Http\Controllers\CartController::class, 'add'])->name('cart.add');
 Route::post('/gio-hang/xoa', [App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');
+Route::post('/gio-hang/cap-nhat', [App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
 
 Route::middleware('auth')->group(function () {
     Route::get('/lich-su-mua-hang', [OrderController::class, 'index'])->name('orders.index');

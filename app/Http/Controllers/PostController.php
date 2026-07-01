@@ -6,21 +6,23 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    protected $postHandler;
+
+    public function __construct(\App\Handlers\PostHandler $postHandler)
+    {
+        $this->postHandler = $postHandler;
+    }
+
     public function index()
     {
-        $posts = \App\Models\Post::where('is_published', true)->latest()->paginate(9);
+        $posts = $this->postHandler->getPaginatedPosts(9);
         return view('news.index', compact('posts'));
     }
 
     public function show($slug)
     {
-        $post = \App\Models\Post::where('slug', $slug)->where('is_published', true)->firstOrFail();
-        
-        $relatedPosts = \App\Models\Post::where('id', '!=', $post->id)
-            ->where('is_published', true)
-            ->latest()
-            ->take(3)
-            ->get();
+        $post = $this->postHandler->getPostBySlug($slug);
+        $relatedPosts = $this->postHandler->getRelatedPosts($post->id, 3);
 
         return view('news.show', compact('post', 'relatedPosts'));
     }

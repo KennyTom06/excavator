@@ -53,7 +53,7 @@
                     <a href="{{ route('products.index') }}" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Sản Phẩm</a>
                     <a href="{{ route('news.index') }}" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Tin Tức</a>
                     <a href="{{ route('about') }}" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Về Chúng Tôi</a>
-                    <a href="{{ route('contact') }}" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Liên Hệ</a>
+                    <a href="{{ route('contact') }}" class="text-white bg-brand-600 hover:bg-brand-700 px-5 py-2 rounded-full font-medium transition-all shadow-md hover:shadow-lg">Liên Hệ</a>
                     
                     <div class="h-6 w-px bg-gray-200 mx-2"></div>
                     

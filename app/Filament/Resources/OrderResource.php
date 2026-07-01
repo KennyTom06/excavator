@@ -47,6 +47,21 @@ class OrderResource extends Resource
                             ])
                             ->required(),
                     ])->columns(2),
+                Forms\Components\Section::make('Sản phẩm đã đặt')
+                    ->schema([
+                        Forms\Components\Repeater::make('items')
+                            ->relationship()
+                            ->schema([
+                                Forms\Components\TextInput::make('product_name')->label('Tên sản phẩm')->disabled(),
+                                Forms\Components\TextInput::make('quantity')->label('Số lượng')->disabled(),
+                                Forms\Components\TextInput::make('price')->label('Đơn giá')->numeric()->disabled(),
+                                Forms\Components\TextInput::make('total')->label('Thành tiền')->numeric()->disabled(),
+                            ])
+                            ->columns(4)
+                            ->disableItemCreation()
+                            ->disableItemDeletion()
+                            ->disableItemMovement(),
+                    ]),
             ]);
     }
 

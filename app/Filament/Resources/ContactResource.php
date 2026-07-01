@@ -22,6 +22,25 @@ class ContactResource extends Resource
     protected static ?string $modelLabel = 'Liên hệ';
     protected static ?string $pluralModelLabel = 'Các liên hệ';
 
+    public static function infolist(\Filament\Infolists\Infolist $infolist): \Filament\Infolists\Infolist
+    {
+        return $infolist
+            ->schema([
+                \Filament\Infolists\Components\TextEntry::make('name')
+                    ->label('Tên khách hàng'),
+                \Filament\Infolists\Components\TextEntry::make('email')
+                    ->label('Email'),
+                \Filament\Infolists\Components\TextEntry::make('phone')
+                    ->label('Số điện thoại'),
+                \Filament\Infolists\Components\TextEntry::make('message')
+                    ->label('Nội dung')
+                    ->columnSpanFull(),
+                \Filament\Infolists\Components\IconEntry::make('is_read')
+                    ->label('Đã xử lý')
+                    ->boolean(),
+            ]);
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -45,8 +64,7 @@ class ContactResource extends Resource
                     ->disabled()
                     ->columnSpanFull(),
                 Forms\Components\Toggle::make('is_read')
-                    ->label('Đã xử lý')
-                    ->disabled(),
+                    ->label('Đã xử lý'),
             ]);
     }
 
@@ -80,14 +98,9 @@ class ContactResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\Action::make('approve')
-                    ->label('Đã xử lý')
-                    ->icon('heroicon-o-check-circle')
-                    ->color('success')
-                    ->requiresConfirmation()
-                    ->action(fn (Contact $record) => $record->update(['is_read' => true]))
-                    ->hidden(fn (Contact $record) => $record->is_read),
+                Tables\Actions\EditAction::make(),
             ])
+            ->actionsColumnLabel('Hành động')
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -107,6 +120,7 @@ class ContactResource extends Resource
         return [
             'index' => Pages\ListContacts::route('/'),
             'view' => Pages\ViewContact::route('/{record}'),
+            'edit' => Pages\EditContact::route('/{record}/edit'),
         ];
     }
 }
