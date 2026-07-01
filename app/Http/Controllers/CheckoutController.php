@@ -10,25 +10,31 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
+    protected $orderHandler;
+    protected $cartHandler;
+
+    public function __construct(
+        \App\Handlers\OrderHandler $orderHandler,
+        \App\Handlers\CartHandler $cartHandler
+    ) {
+        $this->orderHandler = $orderHandler;
+        $this->cartHandler = $cartHandler;
+    }
+
     public function index()
     {
-        $cart = session()->get('cart', []);
-        if (empty($cart)) {
+        $data = $this->cartHandler->getCartData();
+        if (empty($data['cart'])) {
             return redirect()->route('cart.index')->withErrors(['cart' => 'Giỏ hàng của bạn đang trống!']);
         }
         
-        $total = 0;
-        foreach ($cart as $item) {
-            $total += $item['price'] * $item['quantity'];
-        }
-        
-        return view('checkout.index', compact('cart', 'total'));
+        return view('checkout.index', $data);
     }
 
     public function store(Request $request)
     {
-        $cart = session()->get('cart', []);
-        if (empty($cart)) {
+        $data = $this->cartHandler->getCartData();
+        if (empty($data['cart'])) {
             return redirect()->route('cart.index')->withErrors(['cart' => 'Giỏ hàng của bạn đang trống!']);
         }
 
@@ -40,45 +46,16 @@ class CheckoutController extends Controller
             'note' => 'nullable|string',
         ]);
 
-        $totalAmount = 0;
-        foreach ($cart as $item) {
-            $totalAmount += $item['price'] * $item['quantity'];
-        }
-
-        $order = Order::create([
-            'user_id' => Auth::id(),
-            'name' => $validated['name'],
-            'phone' => $validated['phone'],
-            'email' => $validated['email'],
-            'address' => $validated['address'],
-            'note' => $validated['note'],
-            'total_amount' => $totalAmount,
-            'status' => 'pending',
-        ]);
-
-        foreach ($cart as $id => $details) {
-            OrderItem::create([
-                'order_id' => $order->id,
-                'product_id' => $id,
-                'product_name' => $details['name'],
-                'price' => $details['price'],
-                'quantity' => $details['quantity'],
-                'total' => $details['price'] * $details['quantity'],
-            ]);
-            
-            $product = Product::find($id);
-            if ($product) {
-                $product->decrement('quantity', $details['quantity']);
-            }
-        }
+        $order = $this->orderHandler->createOrderFromCart($validated, $data['cart'], $data['total']);
 
         session()->forget('cart');
 
         return redirect()->route('checkout.success', $order->id);
     }
 
-    public function success(Order $order)
+    public function success($orderId)
     {
+        $order = \App\Models\Order::findOrFail($orderId);
         return view('checkout.success', compact('order'));
     }
 }

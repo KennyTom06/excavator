@@ -9,6 +9,13 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
+    protected $authHandler;
+
+    public function __construct(\App\Handlers\AuthHandler $authHandler)
+    {
+        $this->authHandler = $authHandler;
+    }
+
     public function showLogin()
     {
         return view('auth.login');
@@ -21,7 +28,7 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if ($this->authHandler->attemptLogin($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('/');
         }
@@ -42,20 +49,14 @@ class AuthController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
 
-        $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-        ]);
-
-        Auth::login($user);
+        $this->authHandler->registerUserAndLogin($validated);
 
         return redirect('/');
     }
 
     public function logout(Request $request)
     {
-        Auth::logout();
+        $this->authHandler->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');

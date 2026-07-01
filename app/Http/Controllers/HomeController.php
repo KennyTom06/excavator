@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    protected $productHandler;
+
+    public function __construct(\App\Handlers\ProductHandler $productHandler)
+    {
+        $this->productHandler = $productHandler;
+    }
+
     public function index()
     {
-        $featuredProducts = \App\Models\Product::where('is_active', true)
-                                   ->latest()
-                                   ->take(6)
-                                   ->get();
+        $featuredProducts = $this->productHandler->getFeaturedProducts(6);
 
         return view('home', compact('featuredProducts'));
     }

@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    protected $contactHandler;
+
+    public function __construct(\App\Handlers\ContactHandler $contactHandler)
+    {
+        $this->contactHandler = $contactHandler;
+    }
+
     public function about()
     {
         return view('about');
@@ -25,7 +32,7 @@ class PageController extends Controller
             'message' => 'required|string',
         ]);
 
-        \App\Models\Contact::create($validated);
+        $this->contactHandler->submitContact($validated);
 
         return redirect()->back()->with('success', 'Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi sớm nhất có thể!');
     }
