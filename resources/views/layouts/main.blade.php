@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@400;600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
@@ -18,64 +18,48 @@
             theme: {
                 extend: {
                     colors: {
-                        "on-tertiary-fixed-variant": "#454747",
-                        "surface-container-high": "#eae8e7",
-                        "tertiary-fixed": "#e2e2e2",
-                        "surface-bright": "#fbf9f8",
-                        "tertiary-container": "#959696",
-                        "primary": "#a14000",
-                        "on-error": "#ffffff",
-                        "surface-container": "#efeded",
-                        "on-secondary": "#ffffff",
-                        "primary-fixed-dim": "#ffb694",
-                        "tertiary-fixed-dim": "#c6c6c7",
-                        "surface-variant": "#e4e2e2",
-                        "on-primary-fixed-variant": "#7a2f00",
-                        "on-background": "#1b1c1c",
-                        "error-container": "#ffdad6",
-                        "tertiary": "#5d5f5f",
-                        "secondary-fixed-dim": "#c8c6c5",
-                        "error": "#ba1a1a",
-                        "on-tertiary": "#ffffff",
-                        "surface-tint": "#a14000",
-                        "primary-fixed": "#ffdbcc",
-                        "surface-container-low": "#f5f3f3",
+                        "primary": "#B08A4E",
                         "on-primary": "#ffffff",
-                        "on-surface-variant": "#584237",
-                        "secondary-fixed": "#e5e2e1",
-                        "on-secondary-fixed": "#1c1b1b",
-                        "inverse-surface": "#303030",
-                        "on-secondary-fixed-variant": "#474746",
-                        "primary-container": "#f46e1f",
-                        "on-primary-container": "#541e00",
-                        "outline": "#8c7165",
-                        "surface": "#fbf9f8",
-                        "secondary": "#5f5e5e",
-                        "on-primary-fixed": "#351000",
-                        "on-tertiary-fixed": "#1a1c1c",
-                        "secondary-container": "#e2dfde",
-                        "surface-container-highest": "#e4e2e2",
+                        "primary-container": "#f1e5d1",
+                        "on-primary-container": "#3d2b0e",
+                        "secondary": "#0F2A2E",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#cce8ec",
+                        "on-secondary-container": "#051f22",
+                        "tertiary": "#52634f",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#d5e8cf",
+                        "on-tertiary-container": "#111f0f",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#410002",
+                        "background": "#fbfcf8",
+                        "on-background": "#191c1b",
+                        "surface": "#fbfcf8",
+                        "on-surface": "#191c1b",
+                        "surface-variant": "#e1e3de",
+                        "on-surface-variant": "#444844",
+                        "outline": "#747974",
+                        "outline-variant": "#c4c7c2",
+                        "inverse-surface": "#2e3130",
+                        "inverse-on-surface": "#f0f1ec",
                         "inverse-primary": "#ffb694",
-                        "on-error-container": "#93000a",
-                        "on-surface": "#1b1c1c",
-                        "surface-container-lowest": "#ffffff",
-                        "on-tertiary-container": "#2d2f2f",
-                        "surface-dim": "#dbd9d9",
-                        "inverse-on-surface": "#f2f0f0",
-                        "on-secondary-container": "#636262",
-                        "outline-variant": "#e0c0b2",
-                        "background": "#fbf9f8",
+                        "surface-container-low": "#f5f6f1",
+                        "surface-container": "#eff0eb",
+                        "surface-container-high": "#e9ebe5",
+                        "surface-container-highest": "#e3e5e0",
                         "brand": {
-                            50: "#fff8f5",
-                            100: "#ffecdb",
-                            200: "#ffd8c0",
-                            300: "#ffb694",
-                            400: "#ff8c56",
-                            500: "#f46e1f",
-                            600: "#d35500",
-                            700: "#a14000",
-                            800: "#7a2f00",
-                            900: "#541e00"
+                            50: "#fcf8f2",
+                            100: "#f7ecd9",
+                            200: "#f1dcbc",
+                            300: "#eac99c",
+                            400: "#e3b47c",
+                            500: "#B08A4E",
+                            600: "#94713c",
+                            700: "#76592d",
+                            800: "#5a421f",
+                            900: "#3d2b0e"
                         }
                     },
                     borderRadius: {
@@ -94,17 +78,18 @@
                         "gutter": "24px"
                     },
                     fontFamily: {
-                        "headline-md": ["Manrope"],
-                        "headline-lg": ["Manrope"],
-                        "body-lg": ["Work Sans"],
-                        "headline-xl": ["Manrope"],
-                        "body-md": ["Work Sans"],
-                        "label-bold": ["Work Sans"],
-                        "headline-xl-mobile": ["Manrope"]
+                        "headline-md": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "headline-xl-mobile": ["Montserrat"],
+                        "numbers": ["Manrope"]
                     },
                     fontSize: {
-                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
-                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "800"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "800"}],
                         "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
                         "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
                         "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
@@ -219,7 +204,7 @@
                     </div>
                 </div>
             @else
-                <a href="{{ route('login') }}" class="text-primary font-label-bold py-2 px-4 hover:bg-surface-container-low transition-all rounded-lg">
+                <a href="{{ route('login') }}" class="text-secondary hover:text-primary font-label-bold py-2 px-4 hover:bg-surface-container-low transition-all rounded-lg">
                     Đăng nhập
                 </a>
             @endauth
@@ -233,22 +218,39 @@
                 @endif
             </a>
 
-            <a href="{{ route('products.index') }}" class="bg-primary-container text-white font-label-bold py-2 px-6 rounded-lg hover:scale-105 active:scale-90 transition-all shadow-sm hidden sm:block">
+            <a href="{{ route('products.index') }}" class="bg-primary text-white font-label-bold py-2 px-6 rounded-lg hover:bg-primary/90 hover:scale-105 active:scale-90 transition-all shadow-sm hidden sm:block">
                 Sản phẩm
             </a>
 
-            <button class="md:hidden flex items-center p-2 rounded-lg hover:bg-surface-container-low text-secondary">
+            <button id="mobile-menu-btn" class="md:hidden flex items-center p-2 rounded-lg hover:bg-surface-container-low text-secondary transition-colors">
                 <span class="material-symbols-outlined">menu</span>
             </button>
         </div>
     </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-surface shadow-lg border-t border-outline-variant/20 flex-col max-h-[80vh] overflow-y-auto">
+        <a href="{{ route('home') }}" class="px-6 py-4 border-b border-outline-variant/10 text-secondary font-bold hover:bg-surface-container-low transition-colors">Trang chủ</a>
+        @foreach($categories->take(6) as $category)
+            <a href="{{ route('products.index', ['category' => $category->slug]) }}" class="px-6 py-4 border-b border-outline-variant/10 text-secondary hover:bg-surface-container-low transition-colors">{{ $category->name }}</a>
+        @endforeach
+        <a href="{{ route('about') }}" class="px-6 py-4 border-b border-outline-variant/10 text-secondary hover:bg-surface-container-low transition-colors">Về chúng tôi</a>
+        <a href="{{ route('news.index') }}" class="px-6 py-4 border-b border-outline-variant/10 text-secondary hover:bg-surface-container-low transition-colors">Tin tức</a>
+        <a href="{{ route('contact') }}" class="px-6 py-4 border-b border-outline-variant/10 text-secondary hover:bg-surface-container-low transition-colors">Liên hệ</a>
+        
+        <div class="px-6 py-6 border-b border-outline-variant/10">
+            <a href="{{ route('products.index') }}" class="block w-full text-center bg-primary text-white font-label-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors shadow-sm">
+                Sản phẩm
+            </a>
+        </div>
+    </div>
 </header>
 
 <!-- SideNavBar (Floating Contact) -->
 <aside class="fixed right-4 bottom-24 z-50">
-    <div class="flex flex-col items-center gap-3 bg-primary rounded-full py-4 px-3 shadow-xl">
+    <div class="flex flex-col items-center gap-3 bg-secondary rounded-full py-4 px-3 shadow-xl border border-primary/20">
         <a href="{{ route('cart.index') }}"
-           class="relative w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all hover:scale-110"
+           class="relative w-11 h-11 rounded-full bg-white/5 hover:bg-primary/20 text-primary flex items-center justify-center transition-all hover:scale-110"
            title="Giỏ hàng" aria-label="Giỏ hàng">
             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
             @if(session('cart') && count(session('cart')) > 0)
@@ -260,7 +262,7 @@
 
         @if($zaloLink)
             <a href="{{ $zaloLink }}" target="_blank" rel="noopener noreferrer"
-               class="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all hover:scale-110"
+               class="w-11 h-11 rounded-full bg-white/5 hover:bg-primary/20 text-primary flex items-center justify-center transition-all hover:scale-110"
                title="Zalo" aria-label="Zalo">
                 <span class="text-sm font-bold">Zalo</span>
             </a>
@@ -268,21 +270,21 @@
 
         @if($phoneLink)
             <a href="{{ $phoneLink }}"
-               class="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all hover:scale-110"
+               class="w-11 h-11 rounded-full bg-white/5 hover:bg-primary/20 text-primary flex items-center justify-center transition-all hover:scale-110"
                title="Gọi điện" aria-label="Gọi điện">
                 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">call</span>
             </a>
         @endif
 
         <a href="{{ route('contact') }}"
-           class="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all hover:scale-110"
+           class="w-11 h-11 rounded-full bg-white/5 hover:bg-primary/20 text-primary flex items-center justify-center transition-all hover:scale-110"
            title="Liên hệ" aria-label="Liên hệ">
             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">contact_support</span>
         </a>
 
         @if($companyFacebook)
             <a href="{{ $companyFacebook }}" target="_blank" rel="noopener noreferrer"
-               class="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all hover:scale-110"
+               class="w-11 h-11 rounded-full bg-white/5 hover:bg-primary/20 text-primary flex items-center justify-center transition-all hover:scale-110"
                title="Facebook" aria-label="Facebook">
                 <i class="fa-brands fa-facebook-f text-lg"></i>
             </a>
@@ -295,7 +297,7 @@
 </main>
 
 <!-- Footer -->
-<footer class="bg-on-background text-surface py-section-gap mt-auto">
+<footer class="bg-[#0F2A2E] text-surface py-section-gap mt-auto">
     <div class="grid grid-cols-2 md:grid-cols-5 gap-gutter w-full px-gutter md:px-section-gap max-w-container-max mx-auto">
         <div class="col-span-2 md:col-span-2">
             <div class="text-headline-md font-headline-md text-surface mb-stack-md flex items-center gap-3">
@@ -407,6 +409,21 @@
             header.classList.remove('shadow-md');
         }
     });
+
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if(mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            }
+        });
+    }
 </script>
 </body>
 </html>
