@@ -3,20 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Category;
 class HomeController extends Controller
 {
-    protected $productHandler;
-
-    public function __construct(\App\Handlers\ProductHandler $productHandler)
-    {
-        $this->productHandler = $productHandler;
-    }
-
     public function index()
     {
-        $featuredProducts = $this->productHandler->getFeaturedProducts(6);
+        $featuredProducts = \App\Models\Product::where('is_active', true)
+                                   ->latest()
+                                   ->take(6)
+                                   ->get();
 
-        return view('home', compact('featuredProducts'));
+        $categories = Category::all();
+
+        $industryPosts = \App\Models\Post::where('is_published', true)
+                                ->latest()
+                                ->take(4)
+                                ->get();
+
+        $featuredPost = \App\Models\Post::where('is_published', true)
+                                ->latest()
+                                ->first();
+
+        $latestPosts = \App\Models\Post::where('is_published', true)
+                                ->latest()
+                                ->skip(1)
+                                ->take(3)
+                                ->get();
+
+        return view('home', compact('featuredProducts', 'categories', 'industryPosts', 'featuredPost', 'latestPosts'));
     }
 }

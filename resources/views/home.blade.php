@@ -1,186 +1,418 @@
 @extends('layouts.main')
 
 @section('content')
+@php
+    $company = config('company');
+    $companySlogan = $company['tagline'] ?? 'Đối Tác Tin Cậy Mọi Công Trình';
+    $companyDescription = $company['description'] ?? 'Cung cấp giải pháp thiết bị công nghiệp nặng bền bỉ với dịch vụ hậu mãi chuyên nghiệp hàng đầu tại Việt Nam.';
+    $heroImage = asset('images/screen.png');
+@endphp
+
     <!-- Hero Section -->
-    <div class="relative bg-black overflow-hidden min-h-[90vh] flex items-center">
-        <div class="absolute inset-0">
-            <img class="w-full h-full object-cover opacity-40 scale-105 transform origin-center transition-transform duration-[20s] hover:scale-110" src="https://images.unsplash.com/photo-1541888081-36b0ce39e144?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Construction background">
-            <div class="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/70 to-transparent"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent"></div>
+    <section class="relative h-[80vh] min-h-[600px] w-full flex items-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img alt="{{ config('company.name') }}" class="w-full h-full object-cover" src="{{ $heroImage }}"/>
+            <div class="absolute inset-0 bg-hero-overlay"></div>
         </div>
-        
-        <div class="max-w-7xl mx-auto relative z-10 w-full px-4 sm:px-6 lg:px-8">
-            <div class="lg:w-2/3 animate-fade-in-up">
-                <span class="inline-block py-1.5 px-4 rounded-full bg-brand-500/20 text-white text-sm font-bold tracking-widest uppercase mb-6 border border-brand-500/30 backdrop-blur-sm shadow-[0_0_15px_rgba(245,158,11,0.3)]">
-                    CHẤT LƯỢNG HÀNG ĐẦU
-                </span>
-                <h1 class="text-5xl tracking-tight font-extrabold text-white sm:text-6xl md:text-7xl leading-tight">
-                    <span class="block">Giải pháp toàn diện</span>
-                    <span class="block text-brand-500 font-black drop-shadow-[0_0_20px_rgba(245,158,11,0.5)]">
-                        máy móc xây dựng
-                    </span>
+
+        <div class="relative z-10 w-full px-gutter md:px-section-gap max-w-container-max mx-auto text-white">
+            <div class="max-w-2xl">
+                <h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl mb-stack-md">
+                    {{ $companySlogan }}
                 </h1>
-                <p class="mt-6 text-lg text-gray-200 sm:text-xl max-w-2xl leading-relaxed drop-shadow-md">
-                    Chúng tôi cung cấp các dòng máy xúc, máy ủi, và thiết bị xây dựng chuyên dụng tốt nhất thị trường. Đảm bảo tiến độ công trình của bạn với chi phí tối ưu và chất lượng vượt trội.
+                <p class="font-body-lg text-body-lg opacity-90 mb-stack-lg">
+                    {{ $companyDescription }}
                 </p>
-                <div class="mt-10 flex flex-col sm:flex-row gap-5">
-                    <a href="{{ route('products.index') }}" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-2xl text-white bg-brand-600 hover:bg-brand-500 transition-all shadow-[0_0_20px_rgba(245,158,11,0.4)] hover:shadow-[0_0_30px_rgba(245,158,11,0.6)] transform hover:-translate-y-1">
-                        Khám Phá Ngay
-                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </a>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-2xl text-white border-2 border-white/20 hover:bg-white/10 backdrop-blur-sm transition-all transform hover:-translate-y-1 hover:border-white/40 shadow-lg">
-                        Nhận Báo Giá
+                <div class="flex flex-wrap gap-stack-md">
+                    <a href="{{ route('products.index') }}" class="bg-primary-container text-white py-4 px-8 rounded-lg font-headline-md flex items-center gap-2 hover:scale-105 transition-transform">
+                        Khám phá sản phẩm
+                        <span class="material-symbols-outlined text-xl">arrow_outward</span>
                     </a>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Products Section -->
-    <div id="products" class="py-24 bg-gray-50 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 pointer-events-none -mt-32 -mr-32"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="inline-block py-1.5 px-4 rounded-full bg-brand-50 text-brand-700 text-xs font-black tracking-widest uppercase mb-4 border border-brand-100 shadow-sm">Danh Mục Thiết Bị</span>
-                <h2 class="text-4xl leading-tight font-black tracking-tight text-gray-900 sm:text-5xl mb-4">
-                    Sản Phẩm Nổi Bật
-                </h2>
-                <p class="text-xl text-gray-500 mx-auto">
-                    Các dòng máy được tin dùng nhất cho các công trình trọng điểm.
-                </p>
+    <!-- Stats Bar -->
+    <section class="bg-on-background py-stack-lg text-white">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-gutter w-full px-gutter md:px-section-gap max-w-container-max mx-auto text-center">
+            <div>
+                <p class="text-headline-lg font-headline-lg text-primary-container">{{ $company['experience_years'] ?? '15+' }}</p>
+                <p class="text-label-bold uppercase opacity-70">Năm Kinh Nghiệm</p>
+            </div>
+            <div>
+                <p class="text-headline-lg font-headline-lg text-primary-container">{{ $company['machines_delivered'] ?? '500+' }}</p>
+                <p class="text-label-bold uppercase opacity-70">Thiết Bị Đã Bàn Giao</p>
+            </div>
+            <div>
+                <p class="text-headline-lg font-headline-lg text-primary-container">{{ $company['support_provinces'] ?? '63' }}</p>
+                <p class="text-label-bold uppercase opacity-70">Tỉnh Thành Hỗ Trợ</p>
+            </div>
+            <div>
+                <p class="text-headline-lg font-headline-lg text-primary-container">{{ $company['support_time'] ?? '24/7' }}</p>
+                <p class="text-label-bold uppercase opacity-70">Hỗ Trợ Kỹ Thuật</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category & Filters -->
+    <section class="py-section-gap">
+        <div class="w-full px-gutter md:px-section-gap max-w-container-max mx-auto">
+            <div class="text-center mb-section-gap">
+                <h2 class="text-headline-lg font-headline-lg mb-stack-sm">Máy Móc Và Dịch Vụ Của Chúng Tôi</h2>
+                <p class="text-body-md text-secondary">Thiết bị hiện đại và đáng tin cậy cho mọi quy mô dự án</p>
+
+                @if($categories->count())
+                    <div class="mt-stack-lg flex flex-wrap justify-center gap-stack-sm">
+                        @foreach($categories->take(6) as $index => $category)
+                            <a href="{{ route('products.index', ['category' => $category->slug]) }}"
+                               class="{{ $index === 0 ? 'bg-primary text-white' : 'bg-surface-container text-secondary hover:bg-primary/10' }} px-6 py-2 rounded-full text-label-bold transition-colors">
+                                {{ $category->name }}
+                            </a>
+                        @endforeach
+                    </div>
+                @endif
             </div>
 
-            <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-8 lg:grid-cols-3">
-                @forelse($featuredProducts as $product)
-                    <div class="group relative bg-white border border-gray-100 rounded-3xl shadow-lg shadow-gray-200/40 hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 flex flex-col">
-                        <div class="w-full h-64 bg-gray-100 overflow-hidden relative">
-                            @if($product->image)
-                                <img src="/storage/{{ $product->image }}" alt="{{ $product->name }}" class="w-full h-full object-center object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
-                            @else
-                                <div class="w-full h-full flex items-center justify-center text-gray-300 group-hover:scale-110 transition-transform duration-700">
-                                    <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                </div>
-                            @endif
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-xs font-black text-brand-600 shadow-md border border-white/50">
-                                Model: {{ $product->model ?? 'N/A' }}
-                            </div>
+            <!-- Featured Products -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                @forelse($featuredProducts->take(3) as $product)
+                    @php
+                        $productImage = $product->image
+                            ? asset('storage/' . $product->image)
+                            : 'https://via.placeholder.com/800x500?text=No+Image';
+
+                        $productPrice = null;
+                        if (isset($product->price) && $product->price) {
+                            $productPrice = number_format($product->price, 0, ',', '.') . ' đ';
+                        }
+
+                        $spec1 = $product->engine_power ?? $product->cong_suat_dong_co ?? $product->model_engine ?? null;
+                        $spec2 = $product->bucket_capacity ?? $product->trong_luong_may ?? $product->tai_trong_nang ?? null;
+                    @endphp
+
+                    <div class="bg-white border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow group">
+                        <div class="p-stack-md aspect-video">
+                            <img alt="{{ $product->name }}" class="w-full h-full object-contain group-hover:scale-105 transition-transform" src="{{ $productImage }}">
                         </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold text-gray-900 mb-4 line-clamp-2 leading-snug group-hover:text-brand-600 transition-colors">
-                                <a href="{{ route('products.show', $product->slug) }}">
-                                    <span aria-hidden="true" class="absolute inset-0"></span>
-                                    {{ $product->name }}
-                                </a>
+                        <div class="p-stack-md border-t border-outline-variant/20">
+                            <h3 class="text-headline-md font-headline-md mb-stack-xs line-clamp-2">
+                                {{ $product->name }}
                             </h3>
-                            <div class="space-y-2.5 mb-6">
-                                <div class="flex items-center text-sm text-gray-600 bg-gray-50/80 p-2 rounded-lg">
-                                    <svg class="w-4 h-4 mr-2 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
-                                    <span class="font-medium mr-1 text-gray-500 w-24">Trọng lượng:</span> <span class="font-bold text-gray-900">{{ $product->weight ?? '--' }}</span>
-                                </div>
-                                <div class="flex items-center text-sm text-gray-600 bg-gray-50/80 p-2 rounded-lg">
-                                    <svg class="w-4 h-4 mr-2 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                                    <span class="font-medium mr-1 text-gray-500 w-24">Công suất:</span> <span class="font-bold text-gray-900">{{ $product->engine_power ?? '--' }}</span>
-                                </div>
-                                <div class="flex items-center text-sm text-gray-600 bg-gray-50/80 p-2 rounded-lg">
-                                    <svg class="w-4 h-4 mr-2 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                                    <span class="font-medium mr-1 text-gray-500 w-24">Dung tích gầu:</span> <span class="font-bold text-gray-900">{{ $product->bucket_capacity ?? '--' }}</span>
-                                </div>
+
+                            <div class="grid grid-cols-2 gap-stack-sm mb-stack-md text-secondary text-sm">
+                                <p>{{ $spec1 ? 'Thông số: ' . $spec1 : 'Model: ' . ($product->model ?? 'Đang cập nhật') }}</p>
+                                <p>{{ $spec2 ? 'Chi tiết: ' . $spec2 : 'Danh mục: ' . ($product->category->name ?? 'Đang cập nhật') }}</p>
                             </div>
-                            <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
-                                <p class="text-xl font-black text-brand-600">{{ $product->price ? number_format($product->price) . ' đ' : 'Liên hệ' }}</p>
-                                <div class="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center group-hover:bg-brand-600 transition-colors duration-300">
-                                    <svg class="w-5 h-5 text-brand-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+
+                            <div class="flex justify-between items-center gap-3">
+                                <div>
+                                    <p class="text-xs text-secondary">Giá</p>
+                                    <p class="text-headline-md text-primary">
+                                        {{ $productPrice ?? 'Liên hệ' }}
+                                    </p>
                                 </div>
+
+                                <a href="{{ route('products.show', $product->slug) }}"
+                                   class="bg-primary-container text-white px-4 py-2 rounded-lg font-label-bold hover:scale-105 active:scale-95 transition-all whitespace-nowrap">
+                                    Chi Tiết
+                                </a>
                             </div>
                         </div>
                     </div>
                 @empty
-                    <div class="col-span-1 sm:col-span-2 lg:col-span-3 text-center py-24 bg-white/80 backdrop-blur rounded-3xl border border-gray-100 shadow-xl shadow-gray-200/50">
-                        <div class="w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg class="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                            </svg>
+                    @for($i = 0; $i < 3; $i++)
+                        <div class="bg-white border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm">
+                            <div class="p-stack-md aspect-video flex items-center justify-center bg-surface-container-low text-secondary">
+                                Chưa có sản phẩm nổi bật
+                            </div>
+                            <div class="p-stack-md border-t border-outline-variant/20">
+                                <h3 class="text-headline-md font-headline-md mb-stack-xs">Đang cập nhật</h3>
+                                <div class="grid grid-cols-2 gap-stack-sm mb-stack-md text-secondary text-sm">
+                                    <p>Thông số: --</p>
+                                    <p>Giá: --</p>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900">Chưa có sản phẩm nào</h3>
-                        <p class="mt-2 text-gray-500 font-medium mb-8">Đăng nhập Admin để thêm các dòng máy mới.</p>
-                        <a href="/admin" class="inline-flex items-center px-8 py-4 border border-transparent shadow-lg text-base font-bold rounded-2xl text-white bg-gray-900 hover:bg-gray-800 transition-all transform hover:-translate-y-1">
-                            Tới trang Admin
-                        </a>
-                    </div>
+                    @endfor
                 @endforelse
             </div>
-            
-            @if(count($featuredProducts) > 0)
-            <div class="mt-16 text-center">
-                <a href="{{ route('products.index') }}" class="inline-flex items-center justify-center px-10 py-4 border border-gray-200 text-lg font-bold rounded-2xl text-gray-900 bg-white hover:bg-gray-50 hover:border-gray-300 shadow-sm hover:shadow-md transition-all transform hover:-translate-y-1">
+
+            <div class="text-center mt-section-gap">
+                <a href="{{ route('products.index') }}" class="border-2 border-primary-container text-primary font-headline-md py-3 px-10 rounded-lg inline-flex items-center gap-2 hover:bg-primary-container hover:text-white transition-all group">
                     Xem tất cả sản phẩm
-                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
                 </a>
             </div>
-            @endif
         </div>
-    </div>
+    </section>
 
-    <!-- Features Section -->
-    <div class="py-24 bg-white relative overflow-hidden" id="about">
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 pointer-events-none -mb-32 -ml-32"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-20">
-                <span class="inline-block py-1.5 px-4 rounded-full bg-brand-50 text-brand-700 text-xs font-black tracking-widest uppercase mb-4 border border-brand-100 shadow-sm">Tại sao chọn chúng tôi</span>
-                <h2 class="text-4xl leading-tight font-black tracking-tight text-gray-900 sm:text-5xl mb-4">
-                    Đảm Bảo Tiến Độ & An Toàn
-                </h2>
-                <p class="text-xl text-gray-500 mx-auto leading-relaxed">
-                    Chúng tôi cam kết mang lại những giá trị thiết thực nhất cho mọi công trình lớn nhỏ.
+    <!-- Industry Sectors -->
+    <section class="py-section-gap bg-surface-container-low">
+        <div class="w-full px-gutter md:px-section-gap max-w-container-max mx-auto">
+            <div class="mb-stack-lg">
+                <h2 class="text-headline-lg font-headline-lg">Phục Vụ Các Ngành Công Nghiệp</h2>
+                <p class="text-body-md text-secondary max-w-2xl">
+                    Được chế tạo cho những nhu cầu khắc nghiệt nhất, được các doanh nghiệp và công trình trên toàn quốc tin tưởng.
                 </p>
             </div>
 
-            <div class="mt-16">
-                <dl class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
-                    <div class="relative bg-white p-8 rounded-3xl border border-gray-100 shadow-xl shadow-gray-200/30 hover:shadow-2xl hover:border-brand-200 transition-all duration-300 transform hover:-translate-y-2 group">
-                        <dt>
-                            <div class="absolute -top-8 left-8 flex items-center justify-center h-16 w-16 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-lg shadow-brand-500/40 group-hover:scale-110 transition-transform">
-                                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                                </svg>
-                            </div>
-                            <p class="mt-6 text-xl leading-6 font-black text-gray-900">Máy móc chính hãng</p>
-                        </dt>
-                        <dd class="mt-4 text-base text-gray-600 leading-relaxed">
-                            Nhập khẩu trực tiếp từ các thương hiệu hàng đầu thế giới như Komatsu, Caterpillar, Hitachi.
-                        </dd>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md h-auto md:h-[600px]">
+                @php $industryPostsList = isset($industryPosts) ? $industryPosts->values() : collect(); @endphp
 
-                    <div class="relative bg-white p-8 rounded-3xl border border-gray-100 shadow-xl shadow-gray-200/30 hover:shadow-2xl hover:border-brand-200 transition-all duration-300 transform hover:-translate-y-2 group mt-12 sm:mt-0 lg:mt-12">
-                        <dt>
-                            <div class="absolute -top-8 left-8 flex items-center justify-center h-16 w-16 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-lg shadow-brand-500/40 group-hover:scale-110 transition-transform">
-                                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                            </div>
-                            <p class="mt-6 text-xl leading-6 font-black text-gray-900">Hiệu suất vượt trội</p>
-                        </dt>
-                        <dd class="mt-4 text-base text-gray-600 leading-relaxed">
-                            Động cơ mạnh mẽ, tiết kiệm nhiên liệu, hoạt động bền bỉ trong mọi điều kiện khắc nghiệt.
-                        </dd>
-                    </div>
+                @if($industryPostsList->count() > 0)
+                    @php
+                        $post1 = $industryPostsList->get(0);
+                        $img1 = $post1->image ? asset('storage/' . $post1->image) : 'https://via.placeholder.com/600x800?text=No+Image';
+                    @endphp
+                    <a href="{{ route('news.show', $post1->slug) }}" class="relative rounded-2xl overflow-hidden group block">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                             style="background-image: url('{{ $img1 }}')"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-stack-lg text-white w-full">
+                            <h4 class="text-headline-md font-headline-md mb-2 line-clamp-2">{{ $post1->title }}</h4>
+                            <p class="text-sm opacity-80 mb-4 line-clamp-2">{{ \Illuminate\Support\Str::limit(strip_tags($post1->excerpt ?? $post1->content ?? ''), 80) }}</p>
+                            <span class="material-symbols-outlined border border-white rounded-full p-2 group-hover:bg-primary group-hover:border-primary transition-colors">arrow_outward</span>
+                        </div>
+                    </a>
+                @endif
 
-                    <div class="relative bg-white p-8 rounded-3xl border border-gray-100 shadow-xl shadow-gray-200/30 hover:shadow-2xl hover:border-brand-200 transition-all duration-300 transform hover:-translate-y-2 group mt-12 sm:mt-12 lg:mt-0">
-                        <dt>
-                            <div class="absolute -top-8 left-8 flex items-center justify-center h-16 w-16 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-lg shadow-brand-500/40 group-hover:scale-110 transition-transform">
-                                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-                                </svg>
+                <div class="grid grid-rows-2 gap-stack-md">
+                    @if($industryPostsList->count() > 1)
+                        @php
+                            $post2 = $industryPostsList->get(1);
+                            $img2 = $post2->image ? asset('storage/' . $post2->image) : 'https://via.placeholder.com/600x400?text=No+Image';
+                        @endphp
+                        <a href="{{ route('news.show', $post2->slug) }}" class="relative rounded-2xl overflow-hidden group block">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                                 style="background-image: url('{{ $img2 }}')"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 p-stack-md text-white w-full">
+                                <h4 class="text-headline-md font-headline-md line-clamp-1">{{ $post2->title }}</h4>
+                                <span class="material-symbols-outlined border border-white rounded-full p-1 text-sm mt-2 group-hover:bg-primary group-hover:border-primary transition-colors">arrow_outward</span>
                             </div>
-                            <p class="mt-6 text-xl leading-6 font-black text-gray-900">Hỗ trợ kỹ thuật 24/7</p>
-                        </dt>
-                        <dd class="mt-4 text-base text-gray-600 leading-relaxed">
-                            Đội ngũ kỹ sư giàu kinh nghiệm luôn sẵn sàng bảo trì, bảo dưỡng và khắc phục sự cố tận nơi.
-                        </dd>
-                    </div>
-                </dl>
+                        </a>
+                    @endif
+
+                    @if($industryPostsList->count() > 2)
+                        @php
+                            $post3 = $industryPostsList->get(2);
+                            $img3 = $post3->image ? asset('storage/' . $post3->image) : 'https://via.placeholder.com/600x400?text=No+Image';
+                        @endphp
+                        <a href="{{ route('news.show', $post3->slug) }}" class="relative rounded-2xl overflow-hidden group block">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                                 style="background-image: url('{{ $img3 }}')"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 p-stack-md text-white w-full">
+                                <h4 class="text-headline-md font-headline-md line-clamp-1">{{ $post3->title }}</h4>
+                                <span class="material-symbols-outlined border border-white rounded-full p-1 text-sm mt-2 group-hover:bg-primary group-hover:border-primary transition-colors">arrow_outward</span>
+                            </div>
+                        </a>
+                    @endif
+                </div>
+
+                @if($industryPostsList->count() > 3)
+                    @php
+                        $post4 = $industryPostsList->get(3);
+                        $img4 = $post4->image ? asset('storage/' . $post4->image) : 'https://via.placeholder.com/600x800?text=No+Image';
+                    @endphp
+                    <a href="{{ route('news.show', $post4->slug) }}" class="relative rounded-2xl overflow-hidden group block">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                             style="background-image: url('{{ $img4 }}')"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-stack-lg text-white w-full">
+                            <h4 class="text-headline-md font-headline-md mb-2 line-clamp-2">{{ $post4->title }}</h4>
+                            <p class="text-sm opacity-80 mb-4 line-clamp-2">{{ \Illuminate\Support\Str::limit(strip_tags($post4->excerpt ?? $post4->content ?? ''), 80) }}</p>
+                            <span class="material-symbols-outlined border border-white rounded-full p-2 group-hover:bg-primary group-hover:border-primary transition-colors">arrow_outward</span>
+                        </div>
+                    </a>
+                @endif
             </div>
         </div>
     </div>
+
+                <a href="{{ route('about') }}" class="mt-stack-lg bg-primary-container text-white py-3 px-8 rounded-lg font-label-bold inline-flex items-center gap-2 hover:scale-105 active:scale-95 transition-all">
+                    Khám phá thêm
+                    <span class="material-symbols-outlined">arrow_outward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-section-gap bg-surface-container-high/30">
+        <div class="w-full px-gutter md:px-section-gap max-w-container-max mx-auto">
+            <div class="text-center mb-section-gap">
+                <h2 class="text-headline-lg font-headline-lg">Khách Hàng Nói Gì Về Chúng Tôi</h2>
+                <p class="text-body-md text-secondary">Sự tin tưởng từ khách hàng là minh chứng cho chất lượng dịch vụ.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                @php
+                    $testimonials = $company['testimonials'] ?? [
+                        [
+                            'name' => 'Anh Nguyễn Văn Dũng',
+                            'position' => 'Quản lý dự án',
+                            'company' => 'Apex Construction',
+                            'content' => 'Thiết bị của Tâm Phúc Group vận hành bền bỉ, ít hỏng hóc và đội ngũ hỗ trợ rất nhanh chóng.',
+                            'rating' => 5,
+                        ],
+                        [
+                            'name' => 'Chị Hoàng Linh',
+                            'position' => 'Giám đốc vận hành',
+                            'company' => 'Peak Builders',
+                            'content' => 'Chất lượng sản phẩm và dịch vụ sau bán hàng rất tốt, hỗ trợ kỹ thuật rõ ràng và kịp thời.',
+                            'rating' => 5,
+                        ],
+                        [
+                            'name' => 'Anh Lê Minh Khoa',
+                            'position' => 'Kỹ sư trưởng',
+                            'company' => 'BuildPro Group',
+                            'content' => 'Đội ngũ kỹ thuật chuyên nghiệp, hỗ trợ nhanh, chúng tôi hoàn toàn an tâm khi hợp tác.',
+                            'rating' => 5,
+                        ],
+                    ];
+                @endphp
+
+                @foreach($testimonials as $testimonial)
+                    <div class="bg-white p-stack-lg rounded-xl shadow-sm border border-outline-variant/20">
+                        <div class="flex text-primary mb-stack-md">
+                            @for($i = 1; $i <= 5; $i++)
+                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ $i <= ($testimonial['rating'] ?? 5) ? 1 : 0 }};">star</span>
+                            @endfor
+                        </div>
+
+                        <p class="italic text-secondary mb-stack-lg">
+                            "{{ $testimonial['content'] }}"
+                        </p>
+
+                        <div class="flex items-center gap-stack-md">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold">
+                                {{ strtoupper(mb_substr($testimonial['name'], 0, 1)) }}
+                            </div>
+                            <div>
+                                <p class="font-bold">{{ $testimonial['name'] }}</p>
+                                <p class="text-xs text-secondary">
+                                    {{ $testimonial['position'] }}{{ !empty($testimonial['company']) ? ', ' . $testimonial['company'] : '' }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Articles -->
+    <section class="py-section-gap">
+        <div class="w-full px-gutter md:px-section-gap max-w-container-max mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-stack-lg">
+                <div>
+                    <h2 class="text-headline-lg font-headline-lg">Tin tức của chúng tôi</h2>
+                    <p class="text-body-md text-secondary">Cập nhật xu hướng và thông tin mới nhất trong ngành máy móc công trình.</p>
+                </div>
+                <a href="{{ route('news.index') }}" class="text-primary font-label-bold flex items-center gap-1 hover:underline mt-stack-md md:mt-0">
+                    Xem tất cả bài viết
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+                <!-- Main Featured Article -->
+                <div class="md:col-span-7 bg-white rounded-xl overflow-hidden shadow-sm border border-outline-variant/20 group">
+                    @if($featuredPost)
+                        @php
+                            $featuredPostImage = $featuredPost->image
+                                ? asset('storage/' . $featuredPost->image)
+                                : 'https://via.placeholder.com/1200x700?text=No+Image';
+                        @endphp
+
+                        <a href="{{ route('news.show', $featuredPost->slug) }}" class="block">
+                            <div class="h-64 relative overflow-hidden">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="{{ $featuredPostImage }}" alt="{{ $featuredPost->title }}">
+                            </div>
+                            <div class="p-stack-lg">
+                                <p class="text-label-bold text-primary mb-2">
+                                    {{ $featuredPost->category->name ?? 'TIN TỨC' }}
+                                </p>
+                                <h3 class="text-headline-md font-headline-md mb-stack-md">
+                                    {{ $featuredPost->title }}
+                                </h3>
+                                <p class="text-secondary mb-stack-lg">
+                                    {{ \Illuminate\Support\Str::limit(strip_tags($featuredPost->excerpt ?? $featuredPost->content ?? ''), 160) }}
+                                </p>
+                                <div class="flex items-center gap-stack-lg text-xs text-secondary">
+                                    <span class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-sm">calendar_today</span>
+                                        {{ $featuredPost->created_at?->format('d/m/Y') }}
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    @else
+                        <div class="p-stack-lg">
+                            <h3 class="text-headline-md font-headline-md">Chưa có bài viết nổi bật</h3>
+                        </div>
+                    @endif
+                </div>
+
+                <!-- Side Articles List -->
+                <div class="md:col-span-5 space-y-stack-md">
+                    @forelse($latestPosts->take(3) as $post)
+                        @php
+                            $postImage = $post->image
+                                ? asset('storage/' . $post->image)
+                                : 'https://via.placeholder.com/300x300?text=No+Image';
+                        @endphp
+
+                        <a href="{{ route('news.show', $post->slug) }}"
+                           class="flex gap-stack-md p-stack-sm hover:bg-surface-container transition-colors rounded-lg group {{ !$loop->first ? 'border-t border-outline-variant/10' : '' }}">
+                            <div class="w-24 h-24 shrink-0 rounded-lg overflow-hidden">
+                                <img class="w-full h-full object-cover" src="{{ $postImage }}" alt="{{ $post->title }}">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1 group-hover:text-primary line-clamp-2">
+                                    {{ $post->title }}
+                                </h4>
+                                <p class="text-xs text-secondary">
+                                    {{ $post->created_at?->format('d/m/Y') }}
+                                </p>
+                            </div>
+                        </a>
+                    @empty
+                        <div class="text-secondary">Chưa có bài viết mới.</div>
+                    @endforelse
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="py-section-gap">
+        <div class="w-full px-gutter md:px-section-gap max-w-container-max mx-auto">
+            <div class="relative bg-on-background rounded-3xl overflow-hidden p-stack-lg md:p-section-gap text-center text-white">
+                <div class="absolute inset-0 opacity-20 pointer-events-none">
+                    <div class="absolute inset-0 bg-gradient-to-br from-primary via-transparent to-primary-container"></div>
+                </div>
+                <div class="relative z-10 max-w-3xl mx-auto">
+                    <h2 class="text-headline-xl text-headline-xl-mobile md:text-headline-xl mb-stack-md">
+                        Sẵn Sàng Nâng Tầm Dự Án Của Bạn?
+                    </h2>
+                    <p class="text-body-lg opacity-80 mb-stack-lg">
+                        Liên hệ với đội ngũ chuyên gia của chúng tôi ngay hôm nay để nhận báo giá và tư vấn thiết bị phù hợp nhất.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-stack-md">
+                        <a href="{{ route('contact') }}" class="bg-primary-container text-white py-4 px-10 rounded-lg font-headline-md flex items-center gap-2 hover:scale-105 active:scale-95 transition-all">
+                            Liên Hệ Tư Vấn
+                            <span class="material-symbols-outlined">call</span>
+                        </a>
+
+                        <a href="{{ route('products.index') }}" class="border-2 border-white/30 text-white py-4 px-10 rounded-lg font-headline-md hover:bg-white hover:text-on-background transition-all">
+                            Xem sản phẩm
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

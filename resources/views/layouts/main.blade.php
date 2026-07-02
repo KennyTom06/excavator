@@ -1,141 +1,412 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="scroll-smooth" lang="vi">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Thế Giới Máy Xây Dựng - Cung Cấp Máy Xúc Cao Cấp')</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/images/logo.png">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800&display=swap" rel="stylesheet" />
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>@yield('title', config('company.name', 'Tâm Phúc Group') . ' - ' . config('company.tagline', 'Đối Tác Tin Cậy Mọi Công Trình'))</title>
 
-    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @else
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        fontFamily: {
-                            sans: ['Inter', 'sans-serif'],
-                        },
-                        colors: {
-                            brand: {
-                                50: '#fffbeb',
-                                100: '#fef3c7',
-                                500: '#f59e0b',
-                                600: '#d97706',
-                                900: '#78350f',
-                            }
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-fixed-variant": "#454747",
+                        "surface-container-high": "#eae8e7",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-bright": "#fbf9f8",
+                        "tertiary-container": "#959696",
+                        "primary": "#a14000",
+                        "on-error": "#ffffff",
+                        "surface-container": "#efeded",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#ffb694",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "surface-variant": "#e4e2e2",
+                        "on-primary-fixed-variant": "#7a2f00",
+                        "on-background": "#1b1c1c",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#5d5f5f",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#a14000",
+                        "primary-fixed": "#ffdbcc",
+                        "surface-container-low": "#f5f3f3",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#584237",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "inverse-surface": "#303030",
+                        "on-secondary-fixed-variant": "#474746",
+                        "primary-container": "#f46e1f",
+                        "on-primary-container": "#541e00",
+                        "outline": "#8c7165",
+                        "surface": "#fbf9f8",
+                        "secondary": "#5f5e5e",
+                        "on-primary-fixed": "#351000",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "secondary-container": "#e2dfde",
+                        "surface-container-highest": "#e4e2e2",
+                        "inverse-primary": "#ffb694",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#2d2f2f",
+                        "surface-dim": "#dbd9d9",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-secondary-container": "#636262",
+                        "outline-variant": "#e0c0b2",
+                        "background": "#fbf9f8",
+                        "brand": {
+                            50: "#fff8f5",
+                            100: "#ffecdb",
+                            200: "#ffd8c0",
+                            300: "#ffb694",
+                            400: "#ff8c56",
+                            500: "#f46e1f",
+                            600: "#d35500",
+                            700: "#a14000",
+                            800: "#7a2f00",
+                            900: "#541e00"
                         }
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "container-max": "1280px",
+                        "stack-lg": "32px",
+                        "section-gap": "80px",
+                        "stack-xs": "4px",
+                        "gutter": "24px"
+                    },
+                    fontFamily: {
+                        "headline-md": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "body-lg": ["Work Sans"],
+                        "headline-xl": ["Manrope"],
+                        "body-md": ["Work Sans"],
+                        "label-bold": ["Work Sans"],
+                        "headline-xl-mobile": ["Manrope"]
+                    },
+                    fontSize: {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-bold": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-xl-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "800"}]
                     }
-                }
-            }
-        </script>
-    @endif
+                },
+            },
+        }
+    </script>
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-hero-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.7));
+        }
+    </style>
 </head>
-<body class="antialiased bg-gray-50 text-gray-900 font-sans selection:bg-brand-500 selection:text-white flex flex-col min-h-screen">
+<body class="bg-background text-on-background font-body-md overflow-x-hidden flex flex-col min-h-screen">
+@php
+    $company = config('company');
 
-    <!-- Navigation -->
-    <nav class="bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
-                <div class="flex items-center">
-                    <a href="{{ route('home') }}" class="flex items-center gap-3 group">
-                        <img src="/images/logo.png" alt="Tâm Phúc Group" class="h-12 w-auto group-hover:scale-105 transition-transform drop-shadow-md">
-                    </a>
-                </div>
-                <div class="flex items-center gap-6">
-                    <a href="{{ route('products.index') }}" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Sản Phẩm</a>
-                    <a href="{{ route('news.index') }}" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Tin Tức</a>
-                    <a href="{{ route('about') }}" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Về Chúng Tôi</a>
-                    <a href="{{ route('contact') }}" class="text-white bg-brand-600 hover:bg-brand-700 px-5 py-2 rounded-full font-medium transition-all shadow-md hover:shadow-lg">Liên Hệ</a>
-                    
-                    <div class="h-6 w-px bg-gray-200 mx-2"></div>
-                    
-                    <a href="{{ route('cart.index') }}" class="relative text-gray-600 hover:text-brand-600 transition-colors flex items-center">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                        @if(session('cart') && count(session('cart')) > 0)
-                            <span class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full shadow-sm">
-                                {{ count(session('cart')) }}
-                            </span>
-                        @endif
-                    </a>
-                    
-                    <div class="h-6 w-px bg-gray-200 mx-2"></div>
+    $companyName = $company['name'] ?? 'Tâm Phúc Group';
+    $companySlogan = $company['tagline'] ?? 'Đối Tác Tin Cậy Mọi Công Trình';
+    $companyDescription = $company['description'] ?? 'Cung cấp giải pháp thiết bị công nghiệp nặng bền bỉ với dịch vụ hậu mãi chuyên nghiệp hàng đầu tại Việt Nam.';
+    
+    // Contact Info from config
+    $companyPhoneDisplay = $company['contact']['phone_display'] ?? '';
+    $companyPhoneCall = $company['contact']['phone_call'] ?? '';
+    $companyEmail = $company['contact']['email'] ?? '';
+    $companyFacebook = $company['contact']['facebook_url'] ?? '';
+    $companyZaloDisplay = $company['contact']['zalo_display'] ?? '';
+    $companyZaloUrl = $company['contact']['zalo_url'] ?? '';
+    $companyAddress = $company['contact']['address'] ?? '';
+    $companyLogo = $company['logo'] ?? null;
 
-                    @auth
-                        <div class="relative group">
-                            <button class="flex items-center gap-2 text-gray-900 font-medium hover:text-brand-600 focus:outline-none">
-                                {{ Auth::user()->name }}
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                            <div class="absolute right-0 w-48 mt-2 bg-white rounded-xl shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                                <a href="{{ route('orders.index') }}" class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand-600 rounded-t-xl">Lịch sử mua hàng</a>
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <button type="submit" class="block w-full text-left px-4 py-3 text-sm text-red-600 hover:bg-red-50 hover:text-red-700 rounded-b-xl border-t border-gray-50">Đăng xuất</button>
-                                </form>
-                            </div>
-                        </div>
-                    @else
-                        <a href="{{ route('login') }}" class="text-brand-600 font-bold hover:text-brand-700 transition-colors">Đăng Nhập</a>
-                    @endauth
+    $zaloLink = $companyZaloUrl;
+    $phoneLink = $companyPhoneCall ? 'tel:' . preg_replace('/\s+/', '', $companyPhoneCall) : null;
+    $emailLink = $companyEmail ? 'mailto:' . $companyEmail : null;
+    $phoneDisplay = $companyPhoneDisplay;
+
+    // Default categories if not passed
+    $categories = $categories ?? \App\Models\Category::all() ?? collect();
+@endphp
+
+<!-- TopNavBar -->
+<header class="bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm docked full-width top-0 sticky z-50">
+    <nav class="flex justify-between items-center w-full px-gutter md:px-section-gap max-w-container-max mx-auto py-stack-md">
+        <div class="flex items-center gap-3">
+            <a href="{{ route('home') }}" class="flex items-center gap-3">
+                @if($companyLogo)
+                    <img src="{{ asset($companyLogo) }}" alt="{{ $companyName }}" class="h-10 w-auto object-contain">
+                @endif
+                <div class="text-headline-md font-headline-md font-extrabold text-primary">
+                    {{ $companyName }}
                 </div>
-            </div>
+            </a>
         </div>
-    </nav>
 
-    <!-- Main Content -->
-    <main class="flex-grow">
-        @yield('content')
-    </main>
+        <ul class="hidden md:flex items-center gap-stack-lg">
+            <li class="text-primary font-bold border-b-2 border-primary pb-1">
+                <a href="{{ route('home') }}">Trang chủ</a>
+            </li>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 mt-auto">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-            <div class="xl:grid xl:grid-cols-3 xl:gap-8">
-                <div class="space-y-8 xl:col-span-1">
-                    <a href="{{ route('home') }}" class="flex items-center gap-3">
-                        <img src="/images/logo.png" alt="Tâm Phúc Group" class="h-12 w-auto drop-shadow-md bg-white p-1 rounded-lg">
+            @foreach($categories->take(6) as $category)
+                <li class="text-secondary hover:text-primary transition-colors">
+                    <a href="{{ route('products.index', ['category' => $category->slug]) }}">
+                        {{ $category->name }}
                     </a>
-                    <p class="text-gray-400 text-base">
-                        Nhà cung cấp máy xây dựng và thiết bị công trình hàng đầu Việt Nam. Đối tác tin cậy của mọi công trình.
-                    </p>
+                </li>
+            @endforeach
+
+            <li class="relative group">
+                <button class="text-secondary hover:text-primary transition-colors flex items-center gap-1">
+                    Giới thiệu
+                    <span class="material-symbols-outlined text-[18px]">expand_more</span>
+                </button>
+
+                <div class="absolute top-full left-0 mt-2 min-w-[220px] bg-white rounded-xl shadow-lg border border-outline-variant/20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                    <a href="{{ route('about') }}" class="block px-4 py-3 hover:bg-surface-container-low transition-colors">
+                        Về chúng tôi
+                    </a>
+                    <a href="{{ route('news.index') }}" class="block px-4 py-3 hover:bg-surface-container-low transition-colors">
+                        Tin tức
+                    </a>
+                    <a href="{{ route('contact') }}" class="block px-4 py-3 hover:bg-surface-container-low transition-colors rounded-b-xl">
+                        Liên hệ
+                    </a>
                 </div>
-                <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
-                    <div class="md:grid md:grid-cols-2 md:gap-8">
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Sản Phẩm</h3>
-                            <ul class="mt-4 space-y-4">
-                                <li><a href="{{ route('products.index', ['category' => 'may-xuc-dao']) }}" class="text-base text-gray-400 hover:text-white transition-colors">Máy Xúc Đào</a></li>
-                                <li><a href="{{ route('products.index', ['category' => 'may-xuc-lat']) }}" class="text-base text-gray-400 hover:text-white transition-colors">Máy Xúc Lật</a></li>
-                                <li><a href="{{ route('products.index', ['category' => 'may-ui']) }}" class="text-base text-gray-400 hover:text-white transition-colors">Máy Ủi</a></li>
-                                <li><a href="#" class="text-base text-gray-400 hover:text-white transition-colors">Phụ tùng</a></li>
-                            </ul>
-                        </div>
-                        <div class="mt-12 md:mt-0">
-                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Hỗ Trợ</h3>
-                            <ul class="mt-4 space-y-4">
-                                <li><a href="#" class="text-base text-gray-400 hover:text-white transition-colors">Tư vấn kỹ thuật</a></li>
-                                <li><a href="#" class="text-base text-gray-400 hover:text-white transition-colors">Bảo hành bảo dưỡng</a></li>
-                                <li><a href="#" class="text-base text-gray-400 hover:text-white transition-colors">Báo giá</a></li>
-                                <li><a href="#" class="text-base text-gray-400 hover:text-white transition-colors">Liên hệ</a></li>
-                            </ul>
-                        </div>
+            </li>
+        </ul>
+
+        <div class="flex items-center gap-stack-md">
+            @auth
+                <div class="relative group">
+                    <button class="flex items-center gap-2 text-primary font-label-bold py-2 px-4 hover:bg-surface-container-low transition-all focus:outline-none rounded-lg">
+                        {{ Auth::user()->name }}
+                        <span class="material-symbols-outlined text-[18px]">expand_more</span>
+                    </button>
+                    <div class="absolute right-0 top-full mt-2 w-48 bg-white rounded-xl shadow-lg border border-outline-variant/20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                        <a href="{{ route('orders.index') }}" class="block px-4 py-3 text-sm hover:bg-surface-container-low transition-colors rounded-t-xl">
+                            Lịch sử đơn hàng
+                        </a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="block w-full text-left px-4 py-3 text-sm text-error hover:bg-error-container hover:text-on-error-container transition-colors rounded-b-xl border-t border-outline-variant/10">
+                                Đăng xuất
+                            </button>
+                        </form>
                     </div>
                 </div>
+            @else
+                <a href="{{ route('login') }}" class="text-primary font-label-bold py-2 px-4 hover:bg-surface-container-low transition-all rounded-lg">
+                    Đăng nhập
+                </a>
+            @endauth
+
+            <a href="{{ route('cart.index') }}" class="relative text-secondary hover:text-primary transition-colors flex items-center p-2 rounded-full hover:bg-surface-container-low">
+                <span class="material-symbols-outlined">shopping_cart</span>
+                @if(session('cart') && count(session('cart')) > 0)
+                    <span class="absolute 0 right-0 bg-error text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full shadow-sm translate-x-1 -translate-y-1">
+                        {{ count(session('cart')) }}
+                    </span>
+                @endif
+            </a>
+
+            <a href="{{ route('products.index') }}" class="bg-primary-container text-white font-label-bold py-2 px-6 rounded-lg hover:scale-105 active:scale-90 transition-all shadow-sm hidden sm:block">
+                Sản phẩm
+            </a>
+
+            <button class="md:hidden flex items-center p-2 rounded-lg hover:bg-surface-container-low text-secondary">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<!-- SideNavBar (Floating Contact) -->
+<aside class="fixed right-4 bottom-24 z-50">
+    <div class="flex flex-col items-center gap-3 bg-primary rounded-full py-4 px-3 shadow-xl">
+        <a href="{{ route('cart.index') }}"
+           class="relative w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all hover:scale-110"
+           title="Giỏ hàng" aria-label="Giỏ hàng">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+            @if(session('cart') && count(session('cart')) > 0)
+                <span class="absolute 0 right-0 bg-error text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full shadow-sm translate-x-1 -translate-y-1">
+                    {{ count(session('cart')) }}
+                </span>
+            @endif
+        </a>
+
+        @if($zaloLink)
+            <a href="{{ $zaloLink }}" target="_blank" rel="noopener noreferrer"
+               class="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all hover:scale-110"
+               title="Zalo" aria-label="Zalo">
+                <span class="text-sm font-bold">Zalo</span>
+            </a>
+        @endif
+
+        @if($phoneLink)
+            <a href="{{ $phoneLink }}"
+               class="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all hover:scale-110"
+               title="Gọi điện" aria-label="Gọi điện">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">call</span>
+            </a>
+        @endif
+
+        <a href="{{ route('contact') }}"
+           class="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all hover:scale-110"
+           title="Liên hệ" aria-label="Liên hệ">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">contact_support</span>
+        </a>
+
+        @if($companyFacebook)
+            <a href="{{ $companyFacebook }}" target="_blank" rel="noopener noreferrer"
+               class="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all hover:scale-110"
+               title="Facebook" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f text-lg"></i>
+            </a>
+        @endif
+    </div>
+</aside>
+
+<main class="flex-grow">
+    @yield('content')
+</main>
+
+<!-- Footer -->
+<footer class="bg-on-background text-surface py-section-gap mt-auto">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-gutter w-full px-gutter md:px-section-gap max-w-container-max mx-auto">
+        <div class="col-span-2 md:col-span-2">
+            <div class="text-headline-md font-headline-md text-surface mb-stack-md flex items-center gap-3">
+                @if($companyLogo)
+                    <img src="{{ asset($companyLogo) }}" alt="{{ $companyName }}" class="h-10 w-auto bg-white p-1 rounded-lg">
+                @endif
+                {{ $companyName }}
             </div>
-            <div class="mt-12 border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-base text-gray-400 xl:text-center">
-                    &copy; 2026 Tâm Phúc Group. All rights reserved.
-                </p>
+
+            <p class="text-surface-variant mb-stack-lg max-w-xs">
+                {{ $companyDescription }}
+            </p>
+
+            <div class="flex items-center gap-stack-md mb-stack-lg">
+                @if($companyFacebook)
+                    <a class="w-10 h-10 bg-surface/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
+                       href="{{ $companyFacebook }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f text-base"></i>
+                    </a>
+                @endif
+
+                @if($zaloLink)
+                    <a class="w-10 h-10 bg-surface/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors text-xs font-bold"
+                       href="{{ $zaloLink }}" target="_blank" rel="noopener noreferrer" aria-label="Zalo">
+                        Zalo
+                    </a>
+                @endif
+
+                @if($emailLink)
+                    <a class="w-10 h-10 bg-surface/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
+                       href="{{ $emailLink }}" aria-label="Email">
+                        <span class="material-symbols-outlined text-xl">mail</span>
+                    </a>
+                @endif
             </div>
         </div>
-    </footer>
+
+        <div>
+            <h4 class="font-bold mb-stack-md">Danh mục</h4>
+            <ul class="space-y-2 text-sm text-surface-variant">
+                @foreach($categories->take(4) as $category)
+                    <li class="hover:text-surface hover:translate-x-1 transition-all">
+                        <a href="{{ route('products.index', ['category' => $category->slug]) }}">{{ $category->name }}</a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="font-bold mb-stack-md">Giới thiệu</h4>
+            <ul class="space-y-2 text-sm text-surface-variant">
+                <li class="hover:text-surface hover:translate-x-1 transition-all">
+                    <a href="{{ route('about') }}">Về chúng tôi</a>
+                </li>
+                <li class="hover:text-surface hover:translate-x-1 transition-all">
+                    <a href="{{ route('news.index') }}">Tin tức</a>
+                </li>
+                <li class="hover:text-surface hover:translate-x-1 transition-all">
+                    <a href="{{ route('contact') }}">Liên hệ</a>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="font-bold mb-stack-md">Liên hệ</h4>
+            <ul class="space-y-2 text-sm text-surface-variant">
+                @if($companyPhoneDisplay)
+                    <li class="hover:text-surface transition-all">
+                        <a href="{{ $phoneLink }}">{{ $companyPhoneDisplay }}</a>
+                    </li>
+                @endif
+
+                @if($companyEmail)
+                    <li class="hover:text-surface transition-all">
+                        <a href="{{ $emailLink }}">{{ $companyEmail }}</a>
+                    </li>
+                @endif
+
+                @if($companyFacebook)
+                    <li class="hover:text-surface transition-all">
+                        <a href="{{ $companyFacebook }}" target="_blank">Facebook</a>
+                    </li>
+                @endif
+
+                @if($zaloLink)
+                    <li class="hover:text-surface transition-all">
+                        <a href="{{ $zaloLink }}" target="_blank">Zalo</a>
+                    </li>
+                @endif
+            </ul>
+        </div>
+    </div>
+
+    <div class="border-t border-white/10 mt-stack-lg pt-stack-lg w-full px-gutter md:px-section-gap max-w-container-max mx-auto text-xs text-surface-variant flex flex-col md:flex-row justify-between items-center gap-4">
+        <p>© {{ now()->year }} {{ $companyName }}. All Rights Reserved</p>
+        <div class="flex gap-stack-lg">
+            <a class="hover:text-surface transition-colors" href="{{ route('contact') }}">Liên hệ</a>
+            <a class="hover:text-surface transition-colors" href="{{ route('about') }}">Giới thiệu</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.add('shadow-md');
+        } else {
+            header.classList.remove('shadow-md');
+        }
+    });
+</script>
 </body>
 </html>
