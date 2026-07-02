@@ -5,7 +5,7 @@
     $company = config('company');
     $companySlogan = $company['tagline'] ?? 'Đối Tác Tin Cậy Mọi Công Trình';
     $companyDescription = $company['description'] ?? 'Cung cấp giải pháp thiết bị công nghiệp nặng bền bỉ với dịch vụ hậu mãi chuyên nghiệp hàng đầu tại Việt Nam.';
-    $heroImage = asset('images/screen.png');
+    $heroImage = asset('images/khonggianxanh_1.jpg');
 @endphp
 
     <!-- Hero Section -->
@@ -17,18 +17,19 @@
 
         <div class="relative z-10 w-full px-gutter md:px-section-gap max-w-container-max mx-auto text-white">
             <div class="max-w-2xl">
-                <h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl mb-stack-md">
-                    {{ $companySlogan }}
-                </h1>
-                <p class="font-body-lg text-body-lg opacity-90 mb-stack-lg">
-                    {{ $companyDescription }}
-                </p>
+             <h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl mb-stack-md text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.7)]">
+    {{ $companySlogan }}
+</h1>
+<<p class="inline-block font-body-lg text-body-lg text-white bg-black/45 px-4 py-2 rounded-lg mb-stack-lg">
+    {{ $companyDescription }}
+</p>
                 <div class="flex flex-wrap gap-stack-md">
-                    <a href="{{ route('products.index') }}" class="bg-primary-container text-white py-4 px-8 rounded-lg font-headline-md flex items-center gap-2 hover:scale-105 transition-transform">
-                        Khám phá sản phẩm
-                        <span class="material-symbols-outlined text-xl">arrow_outward</span>
-                    </a>
-                </div>
+    <a href="{{ route('products.index') }}"
+       class="bg-yellow-400 text-gray-900 py-4 px-8 rounded-lg font-headline-md flex items-center gap-2 hover:scale-105 transition-transform">
+        Khám phá sản phẩm
+        <span class="material-symbols-outlined text-xl">arrow_outward</span>
+    </a>
+</div>
             </div>
         </div>
     </section>
@@ -114,7 +115,7 @@
                                 </div>
 
                                 <a href="{{ route('products.show', $product->slug) }}"
-                                   class="bg-primary-container text-white px-4 py-2 rounded-lg font-label-bold hover:scale-105 active:scale-95 transition-all whitespace-nowrap">
+                                   class="mt-stack-lg bg-yellow-400 text-gray-900 py-3 px-8 rounded-lg font-label-bold inline-flex items-center gap-2 hover:bg-yellow-300 hover:scale-105 active:scale-95 transition-all">
                                     Chi Tiết
                                 </a>
                             </div>
@@ -231,10 +232,11 @@
         </div>
     </div>
 
-                <a href="{{ route('about') }}" class="mt-stack-lg bg-primary-container text-white py-3 px-8 rounded-lg font-label-bold inline-flex items-center gap-2 hover:scale-105 active:scale-95 transition-all">
-                    Khám phá thêm
-                    <span class="material-symbols-outlined">arrow_outward</span>
-                </a>
+    <a href="{{ route('about') }}"
+   class="mt-stack-lg bg-yellow-400 text-gray-900 py-3 px-8 rounded-lg font-label-bold inline-flex items-center gap-2 hover:bg-yellow-300 hover:scale-105 active:scale-95 transition-all">
+    Khám phá thêm
+    <span class="material-symbols-outlined">arrow_outward</span>
+</a>
             </div>
         </div>
     </section>
@@ -387,32 +389,33 @@
         </div>
     </section>
 
-    <!-- CTA Banner -->
-    <section class="py-section-gap">
-        <div class="w-full px-gutter md:px-section-gap max-w-container-max mx-auto">
-            <div class="relative bg-on-background rounded-3xl overflow-hidden p-stack-lg md:p-section-gap text-center text-white">
-                <div class="absolute inset-0 opacity-20 pointer-events-none">
-                    <div class="absolute inset-0 bg-gradient-to-br from-primary via-transparent to-primary-container"></div>
-                </div>
-                <div class="relative z-10 max-w-3xl mx-auto">
-                    <h2 class="text-headline-xl text-headline-xl-mobile md:text-headline-xl mb-stack-md">
-                        Sẵn Sàng Nâng Tầm Dự Án Của Bạn?
-                    </h2>
-                    <p class="text-body-lg opacity-80 mb-stack-lg">
-                        Liên hệ với đội ngũ chuyên gia của chúng tôi ngay hôm nay để nhận báo giá và tư vấn thiết bị phù hợp nhất.
-                    </p>
-                    <div class="flex flex-wrap justify-center gap-stack-md">
-                        <a href="{{ route('contact') }}" class="bg-primary-container text-white py-4 px-10 rounded-lg font-headline-md flex items-center gap-2 hover:scale-105 active:scale-95 transition-all">
-                            Liên Hệ Tư Vấn
-                            <span class="material-symbols-outlined">call</span>
-                        </a>
+  <!-- CTA Banner -->
+<section class="py-section-gap">
+    <div class="w-full px-gutter md:px-section-gap max-w-container-max mx-auto">
+        <div class="relative bg-on-background rounded-3xl overflow-hidden p-stack-lg md:p-section-gap text-center text-white">
+            <div class="absolute inset-0 opacity-20 pointer-events-none">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary via-transparent to-primary-container"></div>
+            </div>
+            <div class="relative z-10 max-w-3xl mx-auto">
+                <h2 class="text-headline-xl text-headline-xl-mobile md:text-headline-xl mb-stack-md">
+                    Sẵn Sàng Nâng Tầm Dự Án Của Bạn?
+                </h2>
+                <p class="text-body-lg opacity-80 mb-stack-lg">
+                    Liên hệ với đội ngũ chuyên gia của chúng tôi ngay hôm nay để nhận báo giá và tư vấn thiết bị phù hợp nhất.
+                </p>
+                <div class="flex flex-wrap justify-center gap-stack-md">
+                   <a href="{{ route('contact') }}"
+   class="bg-yellow-400 text-gray-900 py-4 px-10 rounded-lg font-headline-md flex items-center gap-2 hover:bg-yellow-300 hover:scale-105 active:scale-95 transition-all shadow-lg">
+    Liên Hệ Tư Vấn
+    <span class="material-symbols-outlined">call</span>
+</a>
 
-                        <a href="{{ route('products.index') }}" class="border-2 border-white/30 text-white py-4 px-10 rounded-lg font-headline-md hover:bg-white hover:text-on-background transition-all">
-                            Xem sản phẩm
-                        </a>
-                    </div>
+                    <a href="{{ route('products.index') }}" class="border-2 border-white/30 text-white py-4 px-10 rounded-lg font-headline-md hover:bg-white hover:text-on-background transition-all">
+                        Xem sản phẩm
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 @endsection

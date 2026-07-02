@@ -1,20 +1,23 @@
 <?php
 
 return [
-    'name' => 'Trần Tuấn',
+    'name' => 'Hồ Nam',
+    'full_name_vi' => 'Công Ty Trách Nhiệm Hữu Hạn Hồ Nam',
+    'full_name_en' => 'HO NAM CO.,LTD',
     'logo' => '/images/logo.png',
-    'tagline' => 'Nhà cung cấp máy xây dựng và thiết bị công trình hàng đầu Việt Nam. Đối tác tin cậy của mọi công trình.',
+    'tagline' => 'Kiến tạo không gian xanh - Đối tác tin cậy của mọi công trình',
 
     'contact' => [
-        'phone_display' => '0911103885',
-        'phone_call' => '0911103885',
+        'phone_display' => '064.358.6494',
+        'phone_call' => '0643586494',
 
-        // Zalo dùng số điện thoại hoặc link OA/page của bạn
-        'zalo_display' => '0911103385',
-        'zalo_url' => 'https://zalo.me/0911103885',
+        'fax' => '064.358.0720',
 
-        'email' => 'trannguyentuan1807@gmail.com',
-        'facebook_url' => 'https://www.facebook.com/tuantn1807',
-        'address' => 'Khái Tây 2, Ngũ Hành Sơn, Đà Nẵng',
+        'zalo_display' => '064.358.6494',
+        'zalo_url' => 'https://zalo.me/0643586494',
+
+        'email' => 'cayxanhhonam.vt@gmail.com',
+        'facebook_url' => '',
+        'address' => 'Số 22/13B Chi Lăng, Phường Phước Thắng, Thành Phố Hồ Chí Minh',
     ],
 ];
