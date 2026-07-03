@@ -1,35 +1,66 @@
-# Thế Giới Máy Xây Dựng (Excavator Showcase)
+<div align="center">
+  <h1>🚜 Thế Giới Máy Xây Dựng (Excavator E-Commerce Platform)</h1>
+  <p>Hệ thống E-commerce toàn diện & Landing Page chuyên nghiệp dành cho lĩnh vực kinh doanh máy xúc, máy ủi và thiết bị xây dựng.</p>
+</div>
 
-Dự án Landing Page chuyên nghiệp giới thiệu các dòng máy xúc, máy ủi, thiết bị xây dựng.
+---
 
-## Tính Năng Nổi Bật
+## 🌟 Giới Thiệu
+Dự án được xây dựng với mục tiêu cung cấp một nền tảng thương mại điện tử chuyên nghiệp, giao diện đẳng cấp và mang lại trải nghiệm người dùng tối ưu (UI/UX). Hệ thống bao gồm nền tảng Web App và cung cấp RESTful API hoàn chỉnh phục vụ cho Mobile App (Flutter).
 
-- **Giao Diện Đẹp Mắt & Chuyên Nghiệp:** Sử dụng Tailwind CSS với các hiệu ứng glassmorphism, animations hiện đại, mang lại trải nghiệm premium.
-- **Trải Nghiệm Tối Ưu (Pure UI):** Thiết kế thuần túy tập trung vào việc hiển thị sản phẩm chi tiết mà không có chức năng đăng nhập, đăng ký hay giỏ hàng cho Client, tạo sự tập trung tối đa vào sản phẩm.
-- **Quản Trị Linh Hoạt:** Toàn bộ thông tin sản phẩm, logo, banner được điều chỉnh dễ dàng thông qua hệ thống Admin (Filament).
-- **Kiến Trúc Clean Code:** Áp dụng mô hình chuẩn `Controller -> Handler -> Repository`. Giúp tách biệt logic truy xuất cơ sở dữ liệu, xử lý nghiệp vụ và điều hướng HTTP, dễ dàng mở rộng và bảo trì.
+## 🚀 Tính Năng Nổi Bật
 
-## Yêu Cầu Hệ Thống
+- **Giao Diện Đẳng Cấp & Chuyên Nghiệp (Premium UI/UX):** Ứng dụng Tailwind CSS kết hợp hiệu ứng glassmorphism, animations hiện đại, thiết kế theo tone màu Navy & Gold sang trọng, chuyên nghiệp.
+- **Hệ Thống E-commerce Hoàn Chỉnh:** 
+  - Hỗ trợ Giỏ hàng (Shopping Cart), Quản lý Đơn hàng (Orders).
+  - Xác thực người dùng (Login, Register, Profile).
+  - Bộ lọc sản phẩm linh hoạt và tìm kiếm thông minh.
+- **RESTful API Mạnh Mẽ (Mobile Ready):** Cung cấp hệ thống API đồng bộ bảo mật bằng Laravel Sanctum, phục vụ hoàn hảo cho Ứng dụng Mobile.
+- **Quản Trị Linh Hoạt (Filament Admin):** Bảng điều khiển quản trị mạnh mẽ, trực quan, dễ dàng quản lý Đơn hàng, Sản phẩm, Danh mục, Tin tức và Giao diện hệ thống.
+- **Kiến Trúc Clean Code:** Áp dụng chuẩn mô hình `Controller -> Handler -> Repository`. Tách biệt rõ ràng logic nghiệp vụ, xử lý truy xuất dữ liệu, giúp hệ thống dễ dàng mở rộng và bảo trì.
+
+## 💻 Yêu Cầu Hệ Thống
 
 - PHP >= 8.2
 - Composer
 - Node.js & NPM
-- MySQL / PostgreSQL
+- Cơ sở dữ liệu: MySQL / PostgreSQL
 
-## Cài Đặt
+## 🛠 Hướng Dẫn Cài Đặt
 
-1. Sao chép `.env.example` thành `.env` và cấu hình Database.
-2. Chạy `composer install`
-3. Chạy `npm install && npm run build`
-4. Sinh key: `php artisan key:generate`
-5. Migrate database: `php artisan migrate`
+1. **Clone dự án & cấu hình môi trường:**
+   ```bash
+   cp .env.example .env
+   # Hãy cập nhật các thông tin cấu hình Database trong file .env
+   ```
 
-## Kiến Trúc Mã Nguồn
+2. **Cài đặt các thư viện (Dependencies):**
+   ```bash
+   composer install
+   npm install && npm run build
+   ```
 
-Dự án sử dụng kiến trúc chuẩn giúp tối ưu hóa luồng code:
-- `app/Repositories`: Xử lý giao tiếp trực tiếp với Database.
-- `app/Handlers`: Xử lý logic nghiệp vụ, gọi qua Repositories.
-- `app/Http/Controllers`: Gọi Handlers và trả về View (chỉ tập trung vào HTTP Request).
+3. **Thiết lập Database & Application:**
+   ```bash
+   php artisan key:generate
+   php artisan migrate --seed # (Nếu có seed data)
+   ```
 
-## Liên Hệ
-Mọi chi tiết xin vui lòng liên hệ ban quản trị.
+4. **Khởi chạy ứng dụng:**
+   ```bash
+   php artisan serve
+   ```
+
+## 🏗 Kiến Trúc Mã Nguồn
+
+Dự án tuân thủ nghiêm ngặt chuẩn kiến trúc phần mềm giúp tối ưu hoá vòng đời của một Request:
+- `app/Repositories`: Trực tiếp xử lý các giao tiếp và truy vấn Database.
+- `app/Handlers`: Đảm nhận xử lý các logic nghiệp vụ phức tạp, tương tác thông qua Repositories.
+- `app/Http/Controllers`: Tiếp nhận HTTP Request, gọi đến Handlers tương ứng và trả về View / JSON Response (Tách biệt hoàn toàn khỏi logic DB).
+
+## 📞 Liên Hệ
+
+Mọi chi tiết về dự án, báo lỗi (issues) hoặc yêu cầu tính năng (feature requests), xin vui lòng liên hệ Ban quản trị hoặc mở Issue trên Repository.
+
+---
+*Phát triển bởi đội ngũ The Gioi Toan Cau.*
