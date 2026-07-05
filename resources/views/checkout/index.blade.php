@@ -60,7 +60,7 @@
                     <div class="flex gap-4 mb-6">
                         <div class="w-20 h-20 bg-surface-container-low rounded-lg overflow-hidden flex-shrink-0">
                             @if($item['image'])
-                                <img src="/storage/{{ $item['image'] }}" alt="{{ $item['name'] }}" class="w-full h-full object-cover">
+                                <img src="{{ Storage::url($item['image']) }}" alt="{{ $item['name'] }}" class="w-full h-full object-cover">
                             @endif
                         </div>
                         <div>

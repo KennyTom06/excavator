@@ -45,8 +45,7 @@ class ProductResource extends Resource
                     ->dehydrated(),
                 Forms\Components\TextInput::make('price')
                     ->label('Giá (VNĐ)')
-                    ->numeric()
-                    ->maxLength(255),
+                    ->numeric(),
                 Forms\Components\TextInput::make('quantity')
                     ->label('Số lượng kho')
                     ->numeric()
@@ -91,7 +90,7 @@ class ProductResource extends Resource
                 Forms\Components\TextInput::make('gradeability')
                     ->label('Khả năng leo dốc')
                     ->maxLength(255),
-                Forms\Components\FileUpload::make('image')
+                Forms\Components\FileUpload::make('image')->disk('s3')
                     ->label('Hình ảnh')
                     ->image(),
                 Forms\Components\Textarea::make('description')
@@ -113,7 +112,7 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->label('Tên sản phẩm')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image')
+                Tables\Columns\ImageColumn::make('image')->disk('s3')
                     ->label('Hình ảnh'),
                 Tables\Columns\TextColumn::make('price')
                     ->label('Giá (VNĐ)')

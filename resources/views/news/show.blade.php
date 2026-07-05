@@ -26,7 +26,7 @@
         <article class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-100 overflow-hidden mb-16 relative">
             @if($post->image)
                 <div class="w-full h-64 md:h-[28rem] bg-gray-200 overflow-hidden relative">
-                    <img src="/storage/{{ $post->image }}" alt="{{ $post->title }}" class="w-full h-full object-cover">
+                    <img src="{{ Storage::url($post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <div class="absolute bottom-8 left-8 right-8">
                         <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-black bg-brand-600 text-white uppercase tracking-wider mb-4 shadow-lg shadow-brand-500/30">
@@ -70,7 +70,7 @@
                     <div class="group bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-lg shadow-gray-200/30 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                         <div class="w-full h-48 bg-gray-200 overflow-hidden relative">
                             @if($related->image)
-                                <img src="/storage/{{ $related->image }}" alt="{{ $related->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <img src="{{ Storage::url($related->image) }}" alt="{{ $related->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                             @endif
                             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         </div>
