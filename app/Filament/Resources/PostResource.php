@@ -42,7 +42,7 @@ class PostResource extends Resource
                     ->label('Nội dung')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\FileUpload::make('image')
+                Forms\Components\FileUpload::make('image')->disk('s3')
                     ->label('Hình ảnh')
                     ->image(),
                 Forms\Components\Toggle::make('is_published')
@@ -61,7 +61,7 @@ class PostResource extends Resource
                 Tables\Columns\TextColumn::make('slug')
                     ->label('Đường dẫn')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image')
+                Tables\Columns\ImageColumn::make('image')->disk('s3')
                     ->label('Hình ảnh'),
                 Tables\Columns\IconColumn::make('is_published')
                     ->label('Đã xuất bản')

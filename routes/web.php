@@ -5,6 +5,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UploadController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/san-pham', [ProductController::class, 'index'])->name('products.index');
@@ -17,9 +21,6 @@ Route::post('/lien-he', [PageController::class, 'submitContact'])->name('contact
 Route::get('/tin-tuc', [PostController::class, 'index'])->name('news.index');
 Route::get('/tin-tuc/{slug}', [PostController::class, 'show'])->name('news.show');
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\OrderController;
 
 Route::get('/dang-nhap', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/dang-nhap', [AuthController::class, 'login']);
@@ -41,4 +42,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/lich-su-mua-hang', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/lich-su-mua-hang/{order}', [OrderController::class, 'show'])->name('orders.show');
 });
-
+Route::get('/upload', [UploadController::class, 'index'])->name('upload.index');
+Route::post('/upload',[UploadController::class,'store'])->name('upload.store');

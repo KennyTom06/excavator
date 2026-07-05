@@ -80,7 +80,7 @@
                 @forelse($featuredProducts->take(3) as $product)
                     @php
                         $productImage = $product->image
-                            ? asset('storage/' . $product->image)
+                            ? Storage::url($product->image)
                             : 'https://via.placeholder.com/800x500?text=No+Image';
 
                         $productPrice = null;
@@ -164,7 +164,7 @@
                 @if($industryPostsList->count() > 0)
                     @php
                         $post1 = $industryPostsList->get(0);
-                        $img1 = $post1->image ? asset('storage/' . $post1->image) : 'https://via.placeholder.com/600x800?text=No+Image';
+                        $img1 = $post1->image ? Storage::url($post1->image) : 'https://via.placeholder.com/600x800?text=No+Image';
                     @endphp
                     <a href="{{ route('news.show', $post1->slug) }}" class="relative rounded-2xl overflow-hidden group block">
                         <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
@@ -182,7 +182,7 @@
                     @if($industryPostsList->count() > 1)
                         @php
                             $post2 = $industryPostsList->get(1);
-                            $img2 = $post2->image ? asset('storage/' . $post2->image) : 'https://via.placeholder.com/600x400?text=No+Image';
+                            $img2 = $post2->image ? Storage::url($post2->image) : 'https://via.placeholder.com/600x400?text=No+Image';
                         @endphp
                         <a href="{{ route('news.show', $post2->slug) }}" class="relative rounded-2xl overflow-hidden group block">
                             <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
@@ -198,7 +198,7 @@
                     @if($industryPostsList->count() > 2)
                         @php
                             $post3 = $industryPostsList->get(2);
-                            $img3 = $post3->image ? asset('storage/' . $post3->image) : 'https://via.placeholder.com/600x400?text=No+Image';
+                            $img3 = $post3->image ? Storage::url($post3->image) : 'https://via.placeholder.com/600x400?text=No+Image';
                         @endphp
                         <a href="{{ route('news.show', $post3->slug) }}" class="relative rounded-2xl overflow-hidden group block">
                             <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
@@ -215,7 +215,7 @@
                 @if($industryPostsList->count() > 3)
                     @php
                         $post4 = $industryPostsList->get(3);
-                        $img4 = $post4->image ? asset('storage/' . $post4->image) : 'https://via.placeholder.com/600x800?text=No+Image';
+                        $img4 = $post4->image ? Storage::url($post4->image) : 'https://via.placeholder.com/600x800?text=No+Image';
                     @endphp
                     <a href="{{ route('news.show', $post4->slug) }}" class="relative rounded-2xl overflow-hidden group block">
                         <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
@@ -325,7 +325,7 @@
                     @if($featuredPost)
                         @php
                             $featuredPostImage = $featuredPost->image
-                                ? asset('storage/' . $featuredPost->image)
+                                ? Storage::url($featuredPost->image)
                                 : 'https://via.placeholder.com/1200x700?text=No+Image';
                         @endphp
 
@@ -363,7 +363,7 @@
                     @forelse($latestPosts->take(3) as $post)
                         @php
                             $postImage = $post->image
-                                ? asset('storage/' . $post->image)
+                                ? Storage::url($post->image)
                                 : 'https://via.placeholder.com/300x300?text=No+Image';
                         @endphp
 

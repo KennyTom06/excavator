@@ -38,7 +38,7 @@ class CategoryResource extends Resource
                     ->maxLength(255)
                     ->disabled()
                     ->dehydrated(),
-                Forms\Components\FileUpload::make('image')
+                Forms\Components\FileUpload::make('image')->disk('s3')
                     ->label('Hình ảnh')
                     ->image(),
                 Forms\Components\Textarea::make('description')
@@ -57,7 +57,7 @@ class CategoryResource extends Resource
                 Tables\Columns\TextColumn::make('slug')
                     ->label('Đường dẫn')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image')
+                Tables\Columns\ImageColumn::make('image')->disk('s3')
                     ->label('Hình ảnh'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
