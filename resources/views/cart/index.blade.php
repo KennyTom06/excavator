@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title', 'Giỏ hàng của bạn')
-
+{{--//them 1 dong de thu--}}
 @section('content')
 <div class="bg-gray-50 py-12 min-h-screen">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,7 +36,7 @@
                                             Cập nhật
                                         </button>
                                     </form>
-                                    
+
                                     <form action="{{ route('cart.remove') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $id }}">
